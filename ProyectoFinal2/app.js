@@ -1,4 +1,6 @@
 const contenedor = document.getElementById("productos");
+const tablaCarrito = document.getElementById("tablaCarrito");
+const carrito = [];
 
 const PRODUCTOS = [
     {
@@ -24,33 +26,72 @@ const PRODUCTOS = [
     }
 ];
 
+
+
 const getCard = (item) => {
-    return ( `
+    return (
+        `
         <div class="card" style="width: 18rem;">
             <img src="${item.imagen}" class="card-img-top" alt="${item.nombre}">
             <div class="card-body">
-            <h5 class="card-title">${item.nombre}</h5>
-            <p class="card-text">$ ${item.precio}</p>
-            <p class="card-text">stock: ${item.stock}</p>
-            <a href="#" onclick= "agregarCarrito(${item.id})" class="btn btn-primary">Agregar al Carrito</a>
+                <h5 class="card-title">${item.nombre}</h5>
+                <p class="card-text">$${item.precio}</p>
+                <p class="card-text">Stock: ${item.stock}</p>
+                <button onclick=agregarCarrito(${item.id}) class="btn ${item.stock ? 'btn-primary' : 'btn-secondary'}" ${!item.stock ? 'disabled' : '' } >Agregar al carrito</button>
             </div>
         </div>
     `);
 };
 
+const getRow = (item) => {
+    return(
+        `
+    <tr>
+        <th scope="row">${item.id}</th>
+        <td>${item.nombre}</td>
+        <td>${item.cantidad}</td>
+        <td>$${item.precio * item.cantidad} ($${item.precio})</td>
+        <td><img style="width:20px" src="${item.imagen}" alt="imagen"></td>
+    </tr>
+        `
+    )
+}
 
-const cargarProductos = (datos, nodo) => {
+const cargarProductos = (datos, nodo, esTabla) => {
     let acumulador = "";
-    datos.forEach((elemento) => {
-        acumulador += getCard(elemento);
+    datos.forEach((el) => {
+        acumulador += esTabla ? getRow(el) : getCard(el);
     })
     nodo.innerHTML = acumulador;
 };
 
 const agregarCarrito = (id) => {
-    const seleccion = PRODUCTOS.find(item=>item.id === id);
+    const seleccion = PRODUCTOS.find(item => item.id === id);
+    const busqueda = carrito.findIndex(el => el.id === id);
+    
+    if (busqueda === -1) {
+        carrito.push({
+            id: seleccion.id,
+            nombre: seleccion.nombre,
+            precio: seleccion.precio,
+            cantidad: 1,
+            imagen: seleccion.imagen,
+        })
+    } else {
+        carrito[busqueda].cantidad = carrito[busqueda].cantidad + 1
+    }
+    
+    cargarProductos(carrito, tablaCarrito, true);
+    
+    let ponerStorage = (clave, valor) => {
+        localStorage.setItem(clave, valor);
+    }
+    
+    for(const producto of PRODUCTOS){
+        ponerStorage(producto.id, JSON.stringify(producto))
+    }
 
-    alert("Agregado al Carro: "+ seleccion.nombre)
+    localStorage.setItem("PRODUCTOS", JSON.stringify(PRODUCTOS));
 }
 
-cargarProductos(PRODUCTOS, contenedor);
+cargarProductos(PRODUCTOS, contenedor, false);
