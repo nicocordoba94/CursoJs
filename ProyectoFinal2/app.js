@@ -43,6 +43,16 @@ const getCard = (item) => {
     `);
 };
 
+const btn = document.querySelector('#btnCarro');
+btn.addEventListener('click', () => {
+    Swal.fire({
+        icon: 'succes',
+        title: 'Cargando',
+        text: 'Carga completa',
+    })
+})
+
+
 const getRow = (item) => {
     return(
         `
