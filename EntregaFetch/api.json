@@ -1,0 +1,38 @@
+[
+    {
+      "precio": 150000,
+      "id": 1,
+      "title": "Notebook",
+      "thumbnailUrl": "https://www.venex.com.ar/products_images/1647962114_noteook-bangho-max-l4-i1-f-celeron-5205u-4gb-ssd-120gb-14-free.jpg"
+    },
+    {
+      "precio": 23300,
+      "id": 2,
+      "title": "Playstation 5",
+      "thumbnailUrl": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/1/2/12344_800_3_1.jpg"
+    },
+    {
+        "precio": 21000,
+      "id": 3,
+      "title": "Tablet",
+      "thumbnailUrl": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/y/o/yoga_tab_11_ct2_05.png"
+    },
+    {
+      "precio": 50000,
+      "id": 4,
+      "title": "Monitor",
+      "thumbnailUrl": "https://delta.com.ar/media/catalog/product/cache/03229c62aec18bc8968e7effca99b533/a/r/ar-t35f-388813-lf27t350fhlczb-456992076.jpg"
+    },
+    {
+      "precio": 35000,
+      "id": 5,
+      "title": "Celular",
+      "thumbnailUrl": "https://delta.com.ar/media/catalog/product/cache/dcfa4d7d2f407766967fe41942d9a0cc/d/_/d_nq_np_2x_833619-mla48233725917_112021-f.jpg"
+    },
+    {
+        "precio": 99990,
+        "id": 6,
+        "title": "Smart Tv",
+        "thumbnailUrl": "https://delta.com.ar/media/catalog/product/cache/dcfa4d7d2f407766967fe41942d9a0cc/a/r/ar-uhd-au7000-un65au7000gczb-489502409_1_.jpg"
+    }
+]
